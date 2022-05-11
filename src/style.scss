@@ -1,57 +1,114 @@
 body {
+    margin: 0;padding: 0;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 .form {
     height: 100%;
-    width: 500px;
-    padding: 45px 20px;
+    width:  55%;
+    padding: 45px 50px;
     box-sizing: border-box;
+
+    background-color: rgba(177, 149, 59, 0.637);
 
     border: 1px solid;
 
     display: flex;
     flex-direction: column;
-    align-items: center;
+    // align-items: center;
     justify-content: space-between;
     &__qText {
         font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-        font-size: large;
+        font-size: 25px;
+        color: rgb(88, 13, 13);
+        margin: 50px 0 0 20px;
+    }
+    &__qText:first-child {
+        margin-top:0;
     }
     &-radiolist {
-        width: 100%;
+        height: 140px;
         display: flex;
+        flex-direction: column;
         justify-content: space-between;
 
         padding: 0;
+        margin-top: 20px;
 
         list-style: none;
 
         &__answer {
-            color: rgb(61, 61, 61);
-            font-family: Georgia, 'Times New Roman', Times, serif;
-            font-size: 25px;
+            color: rgb(128, 88, 3);
+            font-family:cursive;
+            font-size: 22px;
         }
     }
     &__button {
         height: 54px;
         width: 122px;
-        padding: 15px 18px;
+        padding: 15px 15px;
+        margin: 50px 0 0 240px;
 
         box-sizing: border-box;
         border-radius: 5px;
         border: none;
 
-        color: rgb(0, 0, 0);
+        color: rgb(255, 255, 255);
         font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-        background-color: rgb(255, 50, 50);
+        background-color: rgb(19, 151, 140);
+        font-size: 19px;
+        transition: 0.1s linear;
+
+        &:hover {
+            background-color: rgba(29, 118, 119, 0.897);
+            box-shadow: 2px 2px 0 0 rgba(23, 56, 49, 0.747);
+        }
+    }
+}
+.final-form {
+    width: 100%;;
+    height: 100vh;
+
+    padding: 30px 150px;
+    box-sizing: border-box;
+    background-color: rgb(255, 255, 255);
+    border: 0;
+    &__h1 {
+        font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        font-size: 42px;
+    }
+    &__p, &__p2, &__p3 {
+        font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        color: rgb(25, 161, 25);
+        font-size: 22px;
+    }
+    &__p2 {
+        color: rgb(250, 122, 36);
+    }
+    &__p3 {
+        color: rgb(191, 31, 212);
+        margin-bottom: 40px;
+    }
+    &__btn {
+        height: 54px;
+        width: 162px;
+        padding: 15px 15px;
+
+        box-sizing: border-box;
+        border-radius: 5px;
+        border: none;
+
+        color: rgb(255, 255, 255);
+        font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        background-color: rgb(40, 180, 27);
         font-size: 19px;
         text-decoration: none;
         transition: 0.1s linear;
 
-        &:hover{
-            background-color: rgb(255, 122, 117);
+        &:hover {
+            background-color: rgba(158, 207, 22, 0.897);
+            box-shadow: 2px 2px 0 0 rgba(0, 0, 0, 0.747);
         }
     }
 }
