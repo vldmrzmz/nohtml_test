@@ -1,6 +1,6 @@
 import './style.scss';
-import {NewQuestion} from './functions'; 
-// import {validate} from './functions';
+import {NewQuestion} from './constructor'; 
+import mockData from './mock_data.json'
 var quantity = 0;
 var rightCounter = 0;
 function validate (arr, rightArr) {
@@ -66,46 +66,82 @@ function renderQuestion(questionObj, form) {
     }
     quantity++;
 }
-//  ===============main==============
+
+
 var validArr = [];
 var form = document.createElement('form');
 form.className = "form";
 document.body.appendChild(form);
 
-var question1 = new NewQuestion(
-"1. Какого типа данных нету в JavaScript?", ["var", "float", "let"], "float");
-validArr.push(question1.correct);
+var chooseText = document.createElement('h1');
+chooseText.innerText = "Выберите тему для вопросов:"
+form.appendChild(chooseText);
 
-renderQuestion(question1, form);
+var btnDev = document.createElement('button');
+btnDev.className = "form__submit ";
+btnDev.innerHTML = "JS";
+form.appendChild(btnDev);
 
-var question2 = new NewQuestion(
-"2. Самый популярный фреймворк JS?", ["React", "Node", "Ember"], "React");
-validArr.push(question2.correct);
-renderQuestion(question2, form);
+btnDev.onclick = function() {
+    form.removeChild(btnDev);
+    form.removeChild(btnGeneral);
+    form.removeChild(chooseText);
+    var question1 = new NewQuestion(
+    "1. Какого типа данных нету в JavaScript?", ["var", "float", "let"], "float");
+    validArr.push(question1.correct);
+    
+    renderQuestion(question1, form);
+    
+    var question2 = new NewQuestion(
+    "2. Самый популярный фреймворк JS?", ["React", "Node", "Ember"], "React");
+    validArr.push(question2.correct);
+    renderQuestion(question2, form);
+    
+    var question3 = new NewQuestion(
+    "3. Какого логического оператора не сущеструет?", ["||", "&&", "??", "$$"], "$$");
+    validArr.push(question3.correct);  
+    renderQuestion(question3, form);
+    
+    var question4 = new NewQuestion("4. Какая из этих команд работает не так как другие две?",
+    ["elem.append(document.createTextNode(text))","elem.innerHTML = text",
+    "elem.textContent = text", ], "elem.innerHTML = text");
+    validArr.push(question4.correct);
+    renderQuestion(question4, form);
+        
+    var question5 = new NewQuestion("5. Какая переменная записана неверно?",
+    ["var isDone = 0;","var num = 'STRING';",
+    "var number = 12,5;", ], "var number = 12,5;");
+    validArr.push(question5.correct);
+    renderQuestion(question5, form);   
+        
+    var button = document.createElement('button');
+    button.className = "form__submit";
+    button.innerHTML = "Отправить";
+    button.type = "submit";
+    form.appendChild(button);
+}
 
-var question3 = new NewQuestion(
-"3. Какого логического оператора не сущеструет?", ["||", "&&", "??", "$$"], "$$");
-validArr.push(question3.correct);  
-renderQuestion(question3, form);
+var btnGeneral = document.createElement('button');
+btnGeneral.className = "form__submit";
+btnGeneral.innerHTML = "Общие";
+form.appendChild(btnGeneral);
 
-var question4 = new NewQuestion("4. Какая из этих команд работает не так как другие две?",
-["elem.append(document.createTextNode(text))","elem.innerHTML = text",
-"elem.textContent = text", ], "elem.innerHTML = text");
-validArr.push(question4.correct);
-renderQuestion(question4, form);
+btnGeneral.onclick = function() {
+    form.removeChild(btnDev);
+    form.removeChild(btnGeneral);
+    form.removeChild(chooseText);
 
-var question5 = new NewQuestion("5. Какая переменная записана неверно?",
-["var isDone = 0;","var num = 'STRING';",
-"var number = 12,5;", ], "var number = 12,5;");
-validArr.push(question5.correct);
-renderQuestion(question5, form);
+    for(let i = 0; i < mockData.length; i++) {
+        validArr.push(mockData[i].correct);
+        renderQuestion(mockData[i], form);
+    }
 
-var button = document.createElement('button');
-button.className = "form__button";
-button.innerHTML = "Отправить";
-button.type = "submit";
-form.appendChild(button);
-
+    var button = document.createElement('button');
+    button.className = "form__submit";
+    button.innerHTML = "Отправить";
+    button.type = "submit";
+    form.appendChild(button);
+}
 
 document.querySelector('form').addEventListener('submit', (e) => {
     const formData = new FormData(form);
